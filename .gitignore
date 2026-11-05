@@ -1,3 +1,6 @@
 .DS_Store
 __pycache__/
 *.pyc
+content/BRIEF.md
+src/original-index.html
+.claude/

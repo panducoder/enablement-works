@@ -1,0 +1,324 @@
+# Glossary for enablement.works. Each id is the anchor used in /glossary/#<id> links.
+- id: sales-enablement
+  term: "Sales enablement"
+  short: "A business function that gives sellers the skills, content, tools and coaching they need to have better buyer conversations and hit quota."
+  long: "Sales enablement plans, builds and runs onboarding, training, content, roleplays and certifications, then measures whether seller behavior and results changed. Good enablement starts from the sales plan, not from a content request queue. Its output is judged by what reaches the field and gets used, not by how much is produced."
+  related_guides: [what-is-sales-enablement, sales-enablement-vs-sales-training, sales-enablement-roadmap]
+
+- id: revenue-enablement
+  term: "Revenue enablement"
+  short: "A broader form of sales enablement that supports every customer-facing role, including SDRs, account managers, customer success and partners, not only quota-carrying sellers."
+  long: "Revenue enablement uses the same methods as sales enablement but widens the audience to everyone who influences revenue. The aim is a consistent message across marketing, sales and post-sale teams. Gartner reports that buyers who meet consistent information from supplier sources are 2.89 times more likely to complete a high-quality, low-regret deal."
+  related_guides: [what-is-sales-enablement, buying-group-consensus]
+
+- id: enablement-output-per-dollar
+  term: "Enablement output per dollar"
+  short: "A metric that compares what enablement delivered and the field used with what enablement cost in the same year."
+  long: "Formula: programs completed on time, certifications passed, roleplays practiced and talk tracks heard on calls, divided by total enablement spend (people, platforms, content and events). Track the trend rather than the absolute number. Low output per dollar usually points to half-used platforms, programs with no follow-up, or skilled people spending hours on production work."
+  related_guides: [sales-enablement-roi, cost-per-active-user, outsourced-sales-enablement]
+
+- id: enablement-capacity
+  term: "Enablement capacity"
+  short: "A planning measure of how many hours of enablement work a team can deliver in a period, compared with the hours the sales plan needs."
+  long: "Estimate the hours each program needs to build, launch, run and report, then add them up for the year. Compare the total with the productive hours your enablement people actually have after meetings and admin. The gap does not disappear: it shows up as late programs, kickoffs without follow-up and low completion."
+  related_guides: [sales-enablement-team-size, sales-enablement-roadmap, outsourced-sales-enablement]
+
+- id: enablement-to-rep-ratio
+  term: "Enablement-to-rep ratio"
+  short: "A staffing ratio that shows how many quota-carrying reps each enablement person supports."
+  long: "Our rule of thumb is one enablement person per 25 to 50 reps, depending on how much onboarding, launch and coaching work the plan needs. An SBI and Revenue Enablement Society survey from 2025 found medians of 41 to 84 sellers per enablement FTE, rising with team size. Divide your rep count by 25 and by 50 to see the range of people your plan assumes."
+  related_guides: [sales-enablement-team-size, outsourced-sales-enablement]
+
+- id: cost-per-active-user
+  term: "Cost per active user"
+  short: "A metric that shows what an enablement tool really costs for each rep who actually used it recently."
+  long: "Formula: annual license cost divided by the number of reps who logged in and completed something in the last 30 days. Calculate it for your LMS, content platform and roleplay tool before each renewal. A high figure rarely means a bad tool; it usually means nobody had time to fill it with current programs and drive completion."
+  related_guides: [cost-per-active-user, sales-enablement-roi]
+
+- id: coaching-coverage
+  term: "Coaching coverage"
+  short: "A metric that shows the share of reps who had at least one documented coaching conversation, based on a real call or roleplay, in the last 30 days."
+  long: "Formula: reps with one or more documented coaching conversations in 30 days, divided by total reps. Report it by team rather than by manager so it becomes a shared goal, not a ranking. It is a stronger sign that training will stick than any completion rate."
+  related_guides: [sales-coaching-coverage, sales-manager-reinforcement]
+
+- id: four-levels-of-evidence
+  term: "Four levels of evidence"
+  short: "A measurement framework that reports enablement results at four levels: activity, practice, behavior and outcome."
+  long: "Activity asks whether reps completed the program. Practice asks whether they can do it in a roleplay or certification. Behavior asks whether they do it on real calls, and outcome asks whether ramp time, stage conversion or win rate moved. Set the baseline before the program starts, and report all four levels on one page each month."
+  related_guides: [sales-enablement-metrics, enablement-report-for-cro, measuring-sales-training-effectiveness]
+
+- id: ramp-time
+  term: "Ramp time"
+  short: "A metric that measures how long a new seller takes to reach full productivity, usually defined as hitting a full quota or a set share of it."
+  long: "Define the finish line before you measure, for example the first month at 100% of a ramped quota. Track it by hiring cohort so you can see whether onboarding changes help. The Bridge Group's 2026 study put average account executive ramp at 6.2 months."
+  related_guides: [sales-onboarding-program, sales-enablement-metrics]
+
+- id: time-to-first-deal
+  term: "Time to first deal"
+  short: "A metric that counts the days from a new seller's start date to their first closed-won deal."
+  long: "Time to first deal is an early signal that arrives months before full ramp. It is easy to pull from the CRM and easy to compare across cohorts. Use it alongside ramp time, because one lucky inherited deal can make it look better than it is."
+  related_guides: [sales-onboarding-program, sales-enablement-metrics]
+
+- id: time-to-productivity
+  term: "Time to productivity"
+  short: "A metric that measures how long a new hire takes to perform at the level expected of a fully ramped peer in the same role."
+  long: "Time to productivity is a broader version of ramp time that can use activity, pipeline or revenue as the benchmark. Choose one definition and keep it fixed across cohorts. An SBI survey from 2025 found 54% of companies use it to judge enablement."
+  related_guides: [sales-onboarding-program, sales-enablement-metrics]
+
+- id: certification
+  term: "Certification"
+  short: "A practice-level assessment in which a seller shows a skill or message to a set standard, usually through a recorded pitch, roleplay or live review."
+  long: "A certification tests whether a rep can do something, not whether they can recognize the right answer in a quiz. Score it with the same short scorecard managers use for coaching. Run the first certification within two weeks of a launch or kickoff, while the content is fresh."
+  related_guides: [sales-skills-scorecard, sales-kickoff-follow-up, measuring-sales-training-effectiveness]
+
+- id: microlearning
+  term: "Microlearning"
+  short: "A training format that delivers one skill or idea in a short unit, usually two to five minutes, that reps can finish between meetings."
+  long: "Microlearning works best as part of a sequence that ends in practice, not as a standalone video. Pair each unit with a question, a roleplay or a field task. Short units also make spaced repetition practical."
+  related_guides: [continuous-sales-training, ai-in-sales-enablement]
+
+- id: ai-roleplay
+  term: "AI roleplay"
+  short: "A practice tool in which a seller rehearses a sales conversation with an AI buyer persona and receives a score and feedback against a scorecard."
+  long: "AI roleplay lets reps practice discovery, objection handling or a new pitch at any time, without a manager present. It pays back when the scenarios match real buyers, the scorecard matches what managers coach, and managers review results. Salesforce's 2026 research found 47% of sellers do not get enough roleplay before customer calls."
+  related_guides: [ai-roleplay-sales-training, ai-in-sales-enablement]
+
+- id: talk-track
+  term: "Talk track"
+  short: "A sales asset that gives reps suggested words for a specific moment in a conversation, such as an opener, a discovery question or a reply to an objection."
+  long: "A good talk track is a short, spoken-language guide, not a script to read. It should match the company's methodology and approved claims. Test it in roleplays before launch, and check later whether reps use it on real calls."
+  related_guides: [problem-first-selling, sales-kickoff-follow-up]
+
+- id: battlecard
+  term: "Battlecard"
+  short: "A sales asset that summarizes how to position against one competitor, with key differences, likely objections and suggested responses."
+  long: "Keep a battlecard to one page and update it on a fixed schedule. Include the questions that expose a competitor's weak points, not only feature tables. Track how often it is opened before competitive deals to judge whether it is used."
+  related_guides: [what-is-sales-enablement, ai-in-sales-enablement]
+
+- id: sales-kickoff
+  term: "Sales kickoff"
+  short: "An annual or semi-annual event that launches the new year's sales strategy, messaging and plays to the whole sales team."
+  long: "The kickoff itself is the easy part. Its value depends on the 90 days after it: a certification on the core message, a roleplay for each new play, nudges to reps who have not started, and reports to the CRO at day 30, 60 and 90. Without that follow-up, most of what was presented fades within weeks."
+  related_guides: [sales-kickoff-follow-up, sales-manager-reinforcement]
+
+- id: reinforcement
+  term: "Reinforcement"
+  short: "A follow-up practice that keeps a new skill or message in use after training, through repeated practice, manager coaching and on-the-job application."
+  long: "Reinforcement includes spaced practice, retrieval questions, roleplays and managers coaching to the same scorecard. Learning research shows recall drops sharply without it. Plan reinforcement when you plan the program, not afterward."
+  related_guides: [sales-manager-reinforcement, continuous-sales-training, sales-kickoff-follow-up]
+
+- id: skills-scorecard
+  term: "Skills scorecard"
+  short: "An assessment tool that lists the few observable behaviors a seller should show in a conversation, with a simple rating scale for each."
+  long: "Keep it to three to five behaviors so managers can use it on every call review. Use the same scorecard in content, roleplays, certifications and coaching notes. A shared scorecard is what makes practice, behavior and coaching data comparable."
+  related_guides: [sales-skills-scorecard, sales-coaching-coverage]
+
+- id: buying-group
+  term: "Buying group"
+  short: "A group of people in a customer organization who influence or approve a purchase, often from several departments."
+  long: "Forrester's 2024 research found an average of 13 internal stakeholders, with 89% of purchases involving two or more departments. Gartner found 74% of buying teams show unhealthy conflict during the decision. Selling to a buying group means helping it agree, not only convincing one contact."
+  related_guides: [buying-group-consensus, problem-first-selling]
+
+- id: champion
+  term: "Champion"
+  short: "A role in a buying group held by a person who wants your solution to win and actively sells it internally when you are not in the room."
+  long: "A champion has influence and a personal stake in solving the problem. Test a champion by asking for something that costs them effort, such as access to another stakeholder. Equip them with short, shareable material they can use with their own colleagues."
+  related_guides: [buying-group-consensus]
+
+- id: conversation-intelligence
+  term: "Conversation intelligence"
+  short: "A software category that records, transcribes and analyzes sales calls to show what reps and buyers say and which behaviors appear."
+  long: "Conversation intelligence makes the behavior level of measurement possible: you can check whether reps use a new talk track on real calls. It also gives managers specific moments to coach. Usage needs consent rules and a clear statement that scores are for coaching."
+  related_guides: [sales-enablement-metrics, sales-coaching-coverage]
+
+- id: lms
+  term: "LMS (learning management system)"
+  short: "A software category that hosts training courses, assigns them to learners and tracks enrollment, completion and quiz scores."
+  long: "An LMS records activity well but rarely shows whether behavior changed. Its value depends on how current the content is and how actively programs are launched and chased. Measure it with cost per active user, not license count."
+  related_guides: [cost-per-active-user, measuring-sales-training-effectiveness]
+
+- id: enablement-platform
+  term: "Enablement platform"
+  short: "A software category that combines content management, training, coaching and analytics for sales teams in one system."
+  long: "Gartner now calls this category revenue enablement platforms. Most teams use a fraction of the features they pay for: in a 2025 Spekit survey, 80% of enablement professionals said reps do not use at least 40% of their platform's features. Adoption depends on the operations behind the tool, not only the tool."
+  related_guides: [cost-per-active-user, sales-enablement-roi]
+
+- id: content-management
+  term: "Content management"
+  short: "An enablement practice of storing, tagging, updating and retiring sales content so reps can find the current, approved version quickly."
+  long: "Good content management includes an owner and a review date for every asset. Retire content that has not been used in two quarters. Out-of-date collateral is a common problem: in a 2025 vendor survey, 48.8% of enablement professionals said at least 40% of theirs was out of date."
+  related_guides: [what-is-sales-enablement, cost-per-active-user]
+
+- id: content-adoption
+  term: "Content adoption"
+  short: "A metric that shows how much of the sales content produced is actually found, used and shared by reps with buyers."
+  long: "Measure it as the share of active assets used in the last 90 days, and the share of reps who used at least one. Pair it with influence on deals where your platform tracks it. Low adoption often means too much content, not too little."
+  related_guides: [sales-enablement-metrics, cost-per-active-user]
+
+- id: enablement-charter
+  term: "Enablement charter"
+  short: "A planning document that sets out what the enablement team owns, whom it serves, how it takes requests and how its success is measured."
+  long: "A charter prevents enablement from becoming a content help desk. It should name the sales behaviors that matter this year, the programs in and out of scope, and the CRO's measures of success. Review it each year with sales leadership."
+  related_guides: [what-is-sales-enablement, sales-enablement-roadmap]
+
+- id: enablement-diagnostic
+  term: "Enablement diagnostic"
+  short: "An assessment that measures what the sales plan needs from enablement, what the team can deliver, what the tools return and which sales behaviors are missing."
+  long: "A diagnostic combines interviews, a tool audit, a content review, a behavior review and a capacity model. Its output is a prioritized roadmap with the first programs defined. Enablement Works runs a three-week version called the Enablement Diagnostic."
+  related_guides: [sales-enablement-roadmap, outsourced-sales-enablement]
+
+- id: skill-sprint
+  term: "Skill sprint"
+  short: "A training format that focuses the whole team on one skill for a fixed period, usually six weeks, with practice, coaching and measurement built in."
+  long: "A typical sprint has a short launch, weekly practice, a certification and manager coaching to one scorecard. Measure the skill before and after on roleplays or calls. Run sprints back to back to replace one-off training events."
+  related_guides: [continuous-sales-training, sales-skills-scorecard]
+
+- id: mcp
+  term: "MCP (Model Context Protocol)"
+  short: "An open standard that lets AI assistants and agents connect to outside tools and data, such as a CRM or content library, through a common interface."
+  long: "MCP matters to enablement because AI agents will look up content, playbooks and account data on a rep's behalf. Content that is structured, current and approved is easier for an agent to use correctly. Treat MCP connections as an access-control decision, not only a technical one."
+  related_guides: [ai-agents-sales-enablement, ai-in-sales-enablement]
+
+- id: ai-agent
+  term: "AI agent"
+  short: "A software system that uses an AI model to plan and carry out multi-step tasks, such as researching an account or drafting outreach, with limited human input."
+  long: "In sales, agents already handle prospect research, call preparation and follow-up drafts. Salesforce's 2026 research found 54% of sellers have used agents. Gartner predicts agents will outnumber sellers ten to one by 2028, but that fewer than 40% of sellers will say agents improved their productivity."
+  related_guides: [ai-agents-sales-enablement, ai-in-sales-enablement]
+
+- id: sales-playbook
+  term: "Sales playbook"
+  short: "A sales asset that documents how to run a specific sales motion, including target buyers, stages, questions, messages, content and exit criteria."
+  long: "A useful playbook is short enough to use in a deal, not a binder. Build plays around buyer problems and stages, and link each play to its talk tracks and assets. An SBI survey from 2025 found 60% of sales organizations have no sales manager playbook."
+  related_guides: [sales-enablement-roadmap, problem-first-selling]
+
+- id: objection-handling
+  term: "Objection handling"
+  short: "A sales skill for responding to a buyer's concern or pushback in a way that clarifies the concern and keeps the conversation moving."
+  long: "Strong objection handling starts with a question that uncovers what sits behind the objection. Practice the five most common objections in roleplays until replies sound natural. Score it on the scorecard rather than by how scripted the answer sounds."
+  related_guides: [ai-roleplay-sales-training, sales-skills-scorecard]
+
+- id: win-rate
+  term: "Win rate"
+  short: "A metric that shows the share of qualified opportunities that end in a closed-won deal over a period."
+  long: "Formula: closed-won deals divided by all closed deals (won plus lost) from the same stage onward. Define the starting stage clearly, because win rate from first meeting and win rate from proposal are very different numbers. Use it as an outcome measure, and compare teams that did and did not get a program."
+  related_guides: [sales-enablement-metrics, enablement-pilot-design]
+
+- id: stage-conversion
+  term: "Stage conversion"
+  short: "A metric that shows the share of opportunities that move from one pipeline stage to the next within a set period."
+  long: "Formula: opportunities that reached stage N+1 divided by opportunities that entered stage N. Stage conversion shows where deals stall, which tells enablement which skill to target. It moves faster than win rate, so it is a useful early outcome measure."
+  related_guides: [sales-enablement-metrics, enablement-report-for-cro]
+
+- id: quota-attainment
+  term: "Quota attainment"
+  short: "A metric that shows a seller's closed revenue as a percentage of their quota, or the share of sellers who reached 100% of quota."
+  long: "Quota attainment is the measure CROs watch most, and an SBI survey found 78% of companies use it to judge enablement. It is influenced by territory, pricing and hiring as well as skill, so do not credit or blame enablement for it alone. Compare attainment between groups that did and did not get a program."
+  related_guides: [sales-enablement-metrics, sales-enablement-roi]
+
+- id: sales-methodology
+  term: "Sales methodology"
+  short: "A framework that defines how sellers think and act at each stage of a deal, such as how they qualify, run discovery and build a business case."
+  long: "A methodology gives everyone a shared language for deals. Enablement's job is to turn it into talk tracks, roleplays, scorecards and deal reviews that reps use every week. Without reinforcement, methodologies tend to become slideware within a quarter."
+  related_guides: [sales-enablement-vs-sales-training, sales-manager-reinforcement]
+
+- id: just-in-time-learning
+  term: "Just-in-time learning"
+  short: "A training approach that delivers short guidance at the moment a seller needs it, such as before a call or at a deal stage."
+  long: "Examples include a battlecard that appears when a competitor is named in the CRM, or a short refresher before a pricing call. It complements structured training rather than replacing it. In a 2025 vendor survey, fewer than 23% of enablement teams used a platform that supports just-in-time content."
+  related_guides: [continuous-sales-training, ai-in-sales-enablement]
+
+- id: spaced-repetition
+  term: "Spaced repetition"
+  short: "A learning technique that reviews material at increasing intervals over time rather than all at once, to improve long-term retention."
+  long: "Research by Cepeda and colleagues found the best gap between study sessions is about 20% to 40% of the time until a test one week away, and about 5% to 10% for a test a year away. In practice, review a new message a few days after launch, then after two weeks, then monthly. Short quizzes or roleplays work better than re-reading."
+  related_guides: [continuous-sales-training, sales-manager-reinforcement]
+
+- id: forgetting-curve
+  term: "Forgetting curve"
+  short: "A learning concept that describes how memory of new material drops quickly after learning and then levels off, unless it is reviewed."
+  long: "The idea comes from Hermann Ebbinghaus's experiments in the 1880s and has been replicated since. The exact rate depends on the material and the learner, so treat fixed percentages for sales training with care. The practical lesson is to plan practice and review in the first days and weeks after any launch."
+  related_guides: [sales-manager-reinforcement, continuous-sales-training]
+
+- id: retrieval-practice
+  term: "Retrieval practice"
+  short: "A learning technique in which learners recall information from memory, for example through a quiz or roleplay, instead of re-reading it."
+  long: "In Roediger and Karpicke's 2006 study, people who took a recall test remembered 56% of a passage a week later, against 42% for people who restudied it. For sellers, roleplays and certifications are retrieval practice. Build them into every program, not only at the end."
+  related_guides: [continuous-sales-training, ai-roleplay-sales-training]
+
+- id: kirkpatrick-model
+  term: "Kirkpatrick model"
+  short: "A training evaluation framework with four levels: reaction, learning, behavior and results."
+  long: "Donald Kirkpatrick introduced the model in the 1950s, and it remains the most common way to evaluate training. Most sales training is only measured at the first two levels. The four levels of evidence adapt the idea for enablement: activity, practice, behavior and outcome."
+  related_guides: [measuring-sales-training-effectiveness, sales-enablement-metrics]
+
+- id: call-scoring
+  term: "Call scoring"
+  short: "A coaching practice that rates a recorded or observed sales call against a defined scorecard of behaviors."
+  long: "Score a small, regular sample of calls per rep rather than many calls once. Use the same three to five behaviors used in training and roleplays. Scores are for coaching and should not feed performance reviews, or reps will stop sharing calls."
+  related_guides: [sales-skills-scorecard, sales-coaching-coverage]
+
+- id: deal-review
+  term: "Deal review"
+  short: "A management practice in which a manager and seller examine a specific opportunity to test qualification, plan next steps and coach the approach."
+  long: "A good deal review asks what the buying group believes, what could stall the deal and what the next step proves. It is one of the best moments to reinforce the methodology. Keep a short, standard set of questions so reviews are comparable across managers."
+  related_guides: [buying-group-consensus, sales-coaching-coverage]
+
+- id: value-messaging
+  term: "Value messaging"
+  short: "A sales messaging approach that frames an offer around the buyer's problems, costs and outcomes rather than product features."
+  long: "Value messaging starts with a problem the buyer may not yet see, then shows the cost of leaving it unsolved. It must be consistent across website, content and sellers, because buyers notice gaps. Gartner found 69% of B2B buyers see inconsistencies between a supplier's website and what its sellers say."
+  related_guides: [problem-first-selling, buying-group-consensus]
+
+- id: onboarding-program
+  term: "Onboarding program"
+  short: "A structured program that takes a new seller from hire to full productivity through training, practice, shadowing and certification."
+  long: "Strong onboarding starts before day one with pre-reading and system access. It sets milestones, such as first certification and first deal, and gives managers a weekly coaching plan. Track ramp time by cohort to see whether changes work."
+  related_guides: [sales-onboarding-program]
+
+- id: enablement-roadmap
+  term: "Enablement roadmap"
+  short: "A planning document that sequences enablement programs over 12 months, tied to the sales plan, with owners, capacity and success measures."
+  long: "Build the roadmap from the sales plan and the behaviors that matter most, then check it against real capacity. Define the first two programs in detail and leave later quarters lighter. Review it each quarter with the CRO."
+  related_guides: [sales-enablement-roadmap, sales-enablement-team-size]
+
+- id: program-completion-rate
+  term: "Program completion rate"
+  short: "A metric that shows the share of assigned reps who finished an enablement program by its due date."
+  long: "Formula: reps who completed by the due date divided by reps assigned. It is an activity measure, the first of the four levels of evidence, so it should never be the only number in a CRO report. Nudges to reps and lists for managers are the most reliable way to raise it."
+  related_guides: [sales-enablement-metrics, enablement-report-for-cro]
+
+- id: readiness
+  term: "Readiness"
+  short: "A state in which a seller has shown, through practice or certification, that they can perform a required skill or message to standard."
+  long: "Readiness is measured at the practice level: roleplay scores, certifications and manager observations. A readiness rate is the share of reps certified on a given skill. It is a useful leading indicator before behavior on real calls can be measured."
+  related_guides: [sales-skills-scorecard, measuring-sales-training-effectiveness]
+
+- id: revops
+  term: "RevOps (revenue operations)"
+  short: "A business function that runs the systems, data, processes and planning behind marketing, sales and customer success."
+  long: "RevOps owns the CRM, territories, forecasting and reporting. Enablement depends on it for the outcome data in the four levels of evidence. Agree early which fields and stages will be used to measure each program."
+  related_guides: [enablement-report-for-cro, sales-enablement-metrics]
+
+- id: buyer-enablement
+  term: "Buyer enablement"
+  short: "A sales approach that helps buyers complete their own purchase by giving them useful tools, information and guidance, rather than only pitching."
+  long: "Examples include business case templates, implementation checklists and short explainers a champion can share with colleagues. It matters because much of the buying journey happens without a seller. Gartner's 2026 survey found 67% of B2B buyers prefer a rep-free experience."
+  related_guides: [buying-group-consensus, problem-first-selling]
+
+- id: enablement-pilot
+  term: "Enablement pilot"
+  short: "A test design in which one team receives a program before another, so the difference in results can be measured."
+  long: "Set the baseline first, start one team 30 days before another, and compare practice, behavior and outcome measures. Keep the groups similar in role and segment. A pilot turns enablement reporting from activity into evidence a CRO can fund."
+  related_guides: [enablement-pilot-design, sales-enablement-metrics]
+
+- id: sales-coaching
+  term: "Sales coaching"
+  short: "A management practice in which a manager helps a seller improve specific behaviors through observation, feedback and practice, usually on real calls or roleplays."
+  long: "Coaching differs from deal inspection: it targets how the rep sells, not only what is in the pipeline. It works best on a shared scorecard with one strength, one gap and one drill per session. Salesforce's 2026 research found 46% of sellers rarely get feedback on their sales conversations."
+  related_guides: [sales-coaching-coverage, sales-manager-reinforcement]
+
+- id: no-decision
+  term: "No decision"
+  short: "A deal outcome in which the buyer ends the purchase process without choosing any supplier, often because the buying group could not agree."
+  long: "No decision is often a larger loss category than losses to competitors. It usually traces back to an unclear problem, weak consensus or too much risk for the buyer. Forrester found 86% of B2B purchases stall during the buying process."
+  related_guides: [buying-group-consensus, problem-first-selling]

@@ -1,0 +1,180 @@
+# Site-wide FAQ for enablement.works. Each answer stands alone.
+- q: "What is sales enablement?"
+  a: "Sales enablement is the function that gives sellers the skills, content, tools and coaching they need to win more deals. It plans, builds and runs onboarding, training, roleplays, certifications and sales content, then measures whether seller behavior and results changed. Good enablement starts from the sales plan, not from a queue of content requests."
+  group: "Basics"
+  link: "/guides/what-is-sales-enablement/"
+
+- q: "What does a sales enablement team do?"
+  a: "A sales enablement team decides what the sales force needs to learn and use, builds it, launches it and checks that it changed behavior. Typical work includes onboarding, product launches, the sales kickoff, certifications, talk tracks, battlecards and coaching support for managers. In an SBI survey from 2025, more than 85% of enablement teams were responsible for sales training, onboarding, content, sales process, measurement and sales technology."
+  group: "Basics"
+  link: "/guides/what-is-sales-enablement/"
+
+- q: "What is the difference between sales enablement and sales training?"
+  a: "Sales training is one activity inside sales enablement. Training teaches a skill or message; enablement also covers content, tools, manager coaching, reinforcement and measurement of results. A training event can end in a day, while enablement owns whether the skill is still used on calls three months later."
+  group: "Basics"
+  link: "/guides/sales-enablement-vs-sales-training/"
+
+- q: "What is revenue enablement?"
+  a: "Revenue enablement is sales enablement widened to every customer-facing role, including SDRs, account managers, customer success and partners. The goal is one consistent message and standard across the customer journey. Gartner reports that buyers who meet consistent information from supplier sources are 2.89 times more likely to complete a high-quality, low-regret deal."
+  group: "Basics"
+  link: "/guides/what-is-sales-enablement/"
+
+- q: "Who should sales enablement report to?"
+  a: "We recommend that sales enablement reports to the CRO or head of sales, because its work must follow the sales plan. Some report to revenue operations or marketing, which can work if sales leadership still sets priorities. In a 2023 Sales Enablement Collective survey, 44.6% of enablement practitioners said that ideally enablement would report directly to the C-suite."
+  group: "Basics"
+  link: "/guides/what-is-sales-enablement/"
+
+- q: "Why is sales enablement important?"
+  a: "Sales enablement matters because buyers expect more from fewer seller conversations. Gartner's 2026 survey found 67% of B2B buyers prefer a rep-free experience, so each conversation a rep does get has to add real value. Enablement is how a sales organization makes that standard consistent across hundreds of reps rather than relying on a few top performers."
+  group: "Basics"
+  link: "/guides/problem-first-selling/"
+
+- q: "How many sales enablement people do you need?"
+  a: "Our rule of thumb is one enablement person per 25 to 50 quota-carrying reps, depending on how much onboarding, launch and coaching work the plan needs. Divide your rep count by 25 and by 50 to get the range your plan assumes. An SBI and Revenue Enablement Society survey from 2025 found a median of 41 sellers per enablement FTE on small teams and 84 on teams of ten or more."
+  group: "Team and budget"
+  link: "/guides/sales-enablement-team-size/"
+
+- q: "When should a company hire its first sales enablement person?"
+  a: "In our experience, a company needs a dedicated enablement person once it has about 25 reps or hires several reps a quarter. Before that, a sales leader can run onboarding and training directly. The trigger is usually ramp time getting longer, or new hires learning by shadowing whoever has time."
+  group: "Team and budget"
+  link: "/guides/sales-enablement-team-size/"
+
+- q: "How big is the average sales enablement team?"
+  a: "Most enablement teams are small. In the Sales Enablement Collective's 2023 survey, the most common team size was 2 to 4 people (33.8%), and 31% of teams had one person. That is why many teams cannot both build and run everything their sales plan asks for."
+  group: "Team and budget"
+  link: "/guides/sales-enablement-team-size/"
+
+- q: "How much should a company spend on sales enablement?"
+  a: "There is no reliable public benchmark for enablement spend as a share of revenue, so size the budget from the work instead. List the programs your sales plan needs, estimate the hours and tools each one takes, and compare the total with your current team and platforms. Then track enablement output per dollar: what reached the field and was used, divided by what you spent."
+  group: "Team and budget"
+  link: "/guides/sales-enablement-roi/"
+
+- q: "Should you outsource sales enablement?"
+  a: "Keep strategy in-house and consider outsourcing production and operations. Your enablement leader should decide priorities, approve every brief and present results to the CRO. Building assets, loading tools, sending nudges and pulling reports can be done by a partner to your standard, which frees your team's hours for judgment."
+  group: "Team and budget"
+  link: "/guides/outsourced-sales-enablement/"
+
+- q: "What experience does a sales enablement manager need?"
+  a: "Most enablement professionals come from sales. An SBI survey from 2025 found 84% have quota-carrying experience, with a median of eight to nine years. The other core skills are program design, adult learning, project management and the ability to read sales data."
+  group: "Team and budget"
+  link: "/guides/what-is-sales-enablement/"
+
+- q: "How do you measure sales enablement?"
+  a: "Measure sales enablement at four levels: activity (did reps complete it), practice (can they do it in a roleplay or certification), behavior (do they do it on real calls) and outcome (did ramp time, stage conversion or win rate move). Set the baseline before the program starts. Report all four levels on one page each month."
+  group: "Measurement"
+  link: "/guides/sales-enablement-metrics/"
+
+- q: "What are the most important sales enablement KPIs?"
+  a: "The most useful sales enablement KPIs are program completion, certification pass rate, coaching coverage, ramp time, stage conversion and win rate. Completion alone is not enough, because it shows activity rather than change. In an SBI survey from 2025, the measures companies used most were quota attainment (78%), sales activity KPIs (77%) and training completion (74%)."
+  group: "Measurement"
+  link: "/guides/sales-enablement-metrics/"
+
+- q: "How do you calculate sales enablement ROI?"
+  a: "Compare the change in an outcome, such as ramp time or win rate, between reps who got a program and reps who did not yet get it, then value that change in revenue. Subtract the full program cost, including people, tools and rep time. A staggered launch, where one team starts 30 days before another, gives the cleanest comparison."
+  group: "Measurement"
+  link: "/guides/sales-enablement-roi/"
+
+- q: "How do you measure sales training effectiveness?"
+  a: "Measure whether reps can do the skill after training, whether they use it on real calls, and whether a related outcome moved. Quiz scores and satisfaction surveys only show that people attended and liked it. Use the same short scorecard for roleplays, certifications and call reviews so the results are comparable."
+  group: "Measurement"
+  link: "/guides/measuring-sales-training-effectiveness/"
+
+- q: "What should a monthly enablement report to the CRO include?"
+  a: "A monthly CRO report should fit on one page and cover activity, practice, behavior and outcomes for each active program. Show the baseline, the current number and the next action for each row. Leave out logins and content views unless they explain a result."
+  group: "Measurement"
+  link: "/guides/enablement-report-for-cro/"
+
+- q: "What is cost per active user for sales tools?"
+  a: "Cost per active user is the annual license cost of a tool divided by the number of reps who used it in the last 30 days. It shows what each real user costs, which is often far more than the price per license. Calculate it for your LMS, content platform and roleplay tool before each renewal."
+  group: "Measurement"
+  link: "/guides/cost-per-active-user/"
+
+- q: "How do you prove sales enablement is working?"
+  a: "Run a pilot: give a program to one team first, keep a similar team as a comparison, and measure both before and after. Start the second team about 30 days later so you can compare results while it catches up. This turns enablement reporting from activity counts into evidence a CRO can fund."
+  group: "Measurement"
+  link: "/guides/enablement-pilot-design/"
+
+- q: "How long should sales onboarding take?"
+  a: "Plan for a structured program of about 90 days, and expect full ramp to take longer. In an SBI survey from 2025, the median expected seller ramp was 3 months, while The Bridge Group's 2026 study put average account executive ramp at 6.2 months, and its 2025 study put SDR ramp at 3.0 months. Start onboarding before day one with pre-reading and system access, and track ramp time by hiring cohort."
+  group: "Programs and coaching"
+  link: "/guides/sales-onboarding-program/"
+
+- q: "What should happen after a sales kickoff?"
+  a: "The 90 days after a sales kickoff decide whether it pays off. Run a short certification on the core message in the first two weeks, one roleplay per new play, nudges to reps who have not started, and a report to the CRO at day 30, 60 and 90. Without this, most of what was presented is not used on calls."
+  group: "Programs and coaching"
+  link: "/guides/sales-kickoff-follow-up/"
+
+- q: "Why does sales training not stick?"
+  a: "Sales training fades when reps do not practice it soon and managers do not reinforce it. In a 2006 study, training professionals estimated 62% of employees apply training immediately but only 34% a year later. Spaced practice, roleplays and coaching to the same scorecard are what keep a skill in use."
+  group: "Programs and coaching"
+  link: "/guides/sales-manager-reinforcement/"
+
+- q: "How often should sales managers coach their reps?"
+  a: "Aim for at least one documented coaching conversation per rep every 30 days, based on a real call or a roleplay. Track the share of reps who get one as coaching coverage. Salesforce's 2026 research found 46% of sellers rarely get feedback on their sales conversations."
+  group: "Programs and coaching"
+  link: "/guides/sales-coaching-coverage/"
+
+- q: "What is continuous sales training?"
+  a: "Continuous sales training replaces one-off events with a steady cycle of short practice on one skill at a time. A common format is the six-week skill sprint: launch, weekly practice, a certification and manager coaching to one scorecard. It works because spaced practice and testing improve long-term retention."
+  group: "Programs and coaching"
+  link: "/guides/continuous-sales-training/"
+
+- q: "How do you build a sales enablement roadmap?"
+  a: "Start from the sales plan and the three to five seller behaviors that matter most this year. List the programs those behaviors need, estimate the hours each takes, and check the total against your team's real capacity. Define the first two programs in detail and review the roadmap each quarter with the CRO."
+  group: "Programs and coaching"
+  link: "/guides/sales-enablement-roadmap/"
+
+- q: "How do you sell to a B2B buying group?"
+  a: "Selling to a buying group means helping several people agree on a problem and a decision, not only convincing one contact. Forrester counts 13 internal stakeholders in a typical decision, and Gartner found 74% of buying teams show unhealthy conflict. Give your champion short, shareable material that helps the group reach consensus."
+  group: "Programs and coaching"
+  link: "/guides/buying-group-consensus/"
+
+- q: "How is AI used in sales enablement?"
+  a: "AI is used in sales enablement to draft content, generate roleplay scenarios, score practice and calls, and answer reps' questions on demand. It makes assets much cheaper to produce. The expensive parts remain: deciding what the field needs, getting it right, launching it, driving completion and showing results."
+  group: "AI"
+  link: "/guides/ai-in-sales-enablement/"
+
+- q: "Does AI roleplay work for sales training?"
+  a: "AI roleplay works when scenarios match real buyers, the scorecard matches what managers coach, and managers look at the results. Without those conditions, reps treat it as a quiz to pass. Salesforce's 2026 research found 47% of sellers do not get enough roleplay practice before customer calls."
+  group: "AI"
+  link: "/guides/ai-roleplay-sales-training/"
+
+- q: "Will AI replace sales enablement teams?"
+  a: "AI will not replace sales enablement, but it will change where the team spends its time. AI speeds up first drafts of content and practice, but it does not decide priorities, run programs or sit in a review with the CRO. Teams that gain most will move saved hours into operations and measurement, not into more content."
+  group: "AI"
+  link: "/guides/ai-in-sales-enablement/"
+
+- q: "How much time does AI save salespeople?"
+  a: "Gartner's 2026 survey of 210 sales leaders found AI tools save sellers an average of 4.8 hours a week. It also found 72% of sales organizations fail to reinvest that time in high-value activities. The gain only shows up in results if someone decides where the saved hours go."
+  group: "AI"
+  link: "/guides/ai-in-sales-enablement/"
+
+- q: "How should sales enablement prepare for AI agents?"
+  a: "Make sales content structured, current and approved, because AI agents will look it up and use it on reps' behalf. Decide which systems agents may access and who reviews what they produce. Gartner predicts AI agents will outnumber sellers ten to one by 2028, yet fewer than 40% of sellers will say agents improved their productivity."
+  group: "AI"
+  link: "/guides/ai-agents-sales-enablement/"
+
+- q: "What does Enablement Works do?"
+  a: "Enablement Works is the production and operations engine for B2B sales enablement teams with 100 to 1,000 reps. Your team sets the strategy; we build content, roleplays and programs in your tools, run them, drive completion and report results to your CRO every month. Engagements start with a three-week Enablement Diagnostic or a free 20-minute Capacity Check."
+  group: "Working with a partner"
+  link: "/guides/outsourced-sales-enablement/"
+
+- q: "Does Enablement Works replace our enablement team?"
+  a: "No. Your enablement team sets the strategy, chooses the programs, approves every brief and presents the results to the CRO. Enablement Works is the production and operations team behind them."
+  group: "Working with a partner"
+  link: "/guides/outsourced-sales-enablement/"
+
+- q: "Which tools does Enablement Works work in?"
+  a: "Enablement Works works in the tools you already own, including content platforms, LMSs, conversation intelligence and AI roleplay tools such as Highspot, Seismic, Mindtickle and Gong. We do not resell licenses. In our first year we take no referral fees from any vendor, so our advice stays neutral."
+  group: "Working with a partner"
+  link: "/guides/outsourced-sales-enablement/"
+
+- q: "What is the Enablement Diagnostic?"
+  a: "The Enablement Diagnostic is a three-week, fixed-fee assessment of what your sales plan needs from enablement, what your team can deliver, what your tools return and which sales behaviors are missing. It includes interviews, a tool audit, a content review, a behavior review and a capacity model. You get a 12-month roadmap with the first two programs defined, presented to your CRO and head of enablement."
+  group: "Working with a partner"
+  link: "/guides/sales-enablement-roadmap/"
+
+- q: "How much of our time does working with Enablement Works take?"
+  a: "In the first 30 days, expect about 3 to 4 hours of the CRO's time and 2 to 3 hours a week from the head of enablement. Managers and reps give 30 to 45 minutes each for interviews. After that, it is a 30-minute work review every one or two weeks and a 15-minute CRO report each month."
+  group: "Working with a partner"
+  link: "/guides/outsourced-sales-enablement/"

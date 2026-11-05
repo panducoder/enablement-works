@@ -92,7 +92,7 @@ def load_yaml(name):
 
 # ---------------------------------------------------------------- layout
 
-NAV = [("/guides/", "Guides"), ("/tools/", "Tools"), ("/sales-enablement-statistics/", "Statistics"), ("/glossary/", "Glossary")]
+NAV = [("/guides/", "Guides"), ("/tools/", "Tools"), ("/videos/", "Videos"), ("/sales-enablement-statistics/", "Statistics"), ("/glossary/", "Glossary")]
 
 
 def org_node():
@@ -147,6 +147,37 @@ ROLES = {
     "problem-first-selling": ["manager", "enablement"],
     "sales-enablement-statistics": ["cro", "enablement", "revops", "manager"],
 }
+
+VIDEO_META = json.loads((ROOT / "video" / "video-meta.json").read_text()) if (ROOT / "video" / "video-meta.json").exists() else {}
+VIDEOS = {  # guide slug -> video
+    "sales-enablement-team-size": {"name": "team-size", "title": "How many enablement people does your plan need?", "desc": "The 1:25 to 50 rule of thumb for sizing a sales enablement team, and what the gap looks like when the plan outgrows the team."},
+    "sales-enablement-metrics": {"name": "four-levels", "title": "The four levels of evidence a CRO will fund", "desc": "Activity, practice, behavior and outcome: the four levels of sales enablement evidence, and how to set a baseline."},
+    "sales-kickoff-follow-up": {"name": "kickoff-90-days", "title": "What the 90 days after a sales kickoff need", "desc": "Certification, roleplays, nudges and a day 30/60/90 report: the plan for the 90 days after a sales kickoff."},
+}
+
+
+def iso_dur(sec):
+    sec = int(round(sec))
+    return f"PT{sec // 60}M{sec % 60}S"
+
+
+def video_node(slug, page_url):
+    v = VIDEOS[slug]
+    m = VIDEO_META.get(v["name"], {})
+    return {"@type": "VideoObject", "@id": page_url + "#video", "name": v["title"], "description": v["desc"],
+            "thumbnailUrl": f"{SITE['url']}/media/{v['name']}-poster.jpg", "uploadDate": "2026-11-06",
+            "duration": iso_dur(m.get("duration", 50)), "contentUrl": f"{SITE['url']}/media/{v['name']}.mp4",
+            "embedUrl": page_url, "transcript": m.get("transcript", ""), "inLanguage": "en", "publisher": {"@id": ORG_ID}}
+
+
+def video_html(slug):
+    v = VIDEOS[slug]
+    m = VIDEO_META.get(v["name"], {})
+    return (f'<figure class="player" style="transform:none;margin:0 0 36px"><video controls preload="none" playsinline poster="/media/{v["name"]}-poster.jpg" width="1920" height="1080">'
+            f'<source src="/media/{v["name"]}.mp4" type="video/mp4"><track kind="captions" src="/media/{v["name"]}.vtt" srclang="en" label="English"></video>'
+            f'<figcaption class="player__bar"><span>Watch: {esc(v["title"])}</span><b>{int(m.get("duration", 50))} s</b></figcaption></figure>'
+            f'<details class="transcript" style="margin:-20px 0 36px"><summary>Video transcript</summary><p>{esc(m.get("transcript", ""))}</p></details>')
+
 
 WORDMARK = ('<span class="wordmark">Enablement<svg class="wordmark__slash" viewBox="0 0 12 20" aria-hidden="true">'
             '<path d="M10 2 L2 18"/></svg>Works</span>')
@@ -299,6 +330,7 @@ def render_doc(d, by_slug, crumbs):
   <div class="case__grid">
     <div class="case__main">
       {f'<section class="takeaways"><h2>Key takeaways</h2><ul class="ticklist">{takeaways}</ul></section>' if takeaways else ''}
+      {video_html(d['slug']) if d['slug'] in VIDEOS else ''}
       <div class="body">{d['body_html']}</div>
       {faq_html(d.get('faqs'), open_first=True)}
       {f'<section class="sources"><h2>Sources</h2><ol>{sources}</ol></section>' if sources else ''}
@@ -328,6 +360,8 @@ def render_doc(d, by_slug, crumbs):
     }, crumbs_node(crumbs)]
     if d.get("faqs"):
         graph.append(faq_node(d["faqs"], url))
+    if d["slug"] in VIDEOS:
+        graph.append(video_node(d["slug"], url))
     extra = f'<link rel="alternate" type="text/markdown" href="{d["path"].rstrip("/")}.md">\n'
     extra += f'<meta property="article:published_time" content="{d["published"]}"><meta property="article:modified_time" content="{d["updated"]}">\n'
     return page(d["path"], d["title"], d.get("description", ""), main, graph, og_image=f"/og/{d['slug']}.png", og_type="article",
@@ -395,13 +429,48 @@ def main():
         write("/glossary/", glossary_page(ctx), priority=0.8)
     if faqs:
         write("/faq/", faq_page(ctx), priority=0.7)
+    write("/videos/", videos_page(by_slug), priority=0.7)
     write("/about/", about_page(ctx), priority=0.6)
     write("/privacy/", privacy_page(ctx), priority=0.2)
     write("/404.html", not_found_page(ctx), sitemap=False)
 
     site_files(guides, pages_, glossary, faqs)
+    video_sitemap(by_slug)
     og.build_all(OUT, SITE, guides + pages_ + TOOL_DOCS)
     print(f"Built {len(WRITTEN)} pages: {len(guides)} guides, {len(pages_)} pages, {len(glossary)} terms, {len(faqs)} FAQs")
+
+
+def videos_page(by_slug):
+    items = []
+    for slug, v in VIDEOS.items():
+        d = by_slug.get(slug)
+        if not d:
+            continue
+        m = VIDEO_META.get(v["name"], {})
+        items.append(f'''<li class="seat" style="margin-top:0"><div class="seat__link" style="background:var(--cobalt-deep);color:#fff">
+<figure class="player" style="transform:none;margin:0"><video controls preload="none" playsinline poster="/media/{v["name"]}-poster.jpg" width="1920" height="1080"><source src="/media/{v["name"]}.mp4" type="video/mp4"><track kind="captions" src="/media/{v["name"]}.vtt" srclang="en" label="English"></video></figure>
+<span class="seat__role">{esc(v["title"])}</span><span class="seat__copy">{esc(v["desc"])}</span><a class="cta-enter" href="{d["path"]}">Read the guide <span class="cta-enter__arrow">→</span></a></div></li>''')
+    url = SITE["url"] + "/videos/"
+    trail = [("/", "Home"), ("/videos/", "Videos")]
+    graph = [crumbs_node(trail), {"@type": "CollectionPage", "@id": url, "url": url, "name": "Sales enablement videos", "isPartOf": {"@id": WEB_ID}}]
+    graph += [video_node(slug, SITE["url"] + by_slug[slug]["path"]) for slug in VIDEOS if slug in by_slug]
+    main = f'''<section class="board" aria-labelledby="v-h"><div class="wrap">
+<div class="board__head"><div><h1 class="board__title" id="v-h">Enablement in <span class="under-coral">under a minute.</span></h1><p class="board__sub">Short, captioned explainers. Each one goes with a full guide that has the formula, a worked example and its sources.</p></div></div>
+<ol class="seats" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr))">{"".join(items)}</ol>
+<a class="cta-banner" href="/#video">Watch the 2-minute Enablement Works explainer</a></div></section>'''
+    return page("/videos/", "Sales enablement videos: short explainers", "Short, captioned sales enablement explainers: team size, the four levels of evidence and the 90 days after a sales kickoff.", main, graph, current="/videos/", tone="cobalt")
+
+
+def video_sitemap(by_slug):
+    entries = []
+    for slug, v in VIDEOS.items():
+        d = by_slug.get(slug)
+        if not d:
+            continue
+        m = VIDEO_META.get(v["name"], {})
+        entries.append(f"""<url><loc>{SITE['url']}{d['path']}</loc><video:video><video:thumbnail_loc>{SITE['url']}/media/{v['name']}-poster.jpg</video:thumbnail_loc><video:title>{esc(v['title'])}</video:title><video:description>{esc(v['desc'])}</video:description><video:content_loc>{SITE['url']}/media/{v['name']}.mp4</video:content_loc><video:duration>{int(m.get('duration', 50))}</video:duration><video:publication_date>2026-11-06T09:00:00+00:00</video:publication_date><video:family_friendly>yes</video:family_friendly></video:video></url>""")
+    entries.append(f"""<url><loc>{SITE['url']}/</loc><video:video><video:thumbnail_loc>{SITE['url']}/media/enablement-works-explainer-poster.png</video:thumbnail_loc><video:title>Enablement Works in two and a half minutes</video:title><video:description>How Enablement Works builds and runs sales enablement programs for B2B sales teams.</video:description><video:content_loc>{SITE['url']}/media/enablement-works-explainer.mp4</video:content_loc><video:duration>155</video:duration><video:publication_date>2026-10-06T09:00:00+00:00</video:publication_date></video:video></url>""")
+    (OUT / "sitemap-video.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">' + "".join(entries) + "</urlset>\n")
 
 
 def doc_markdown(d):
@@ -426,7 +495,7 @@ def site_files(guides, pages_, glossary, faqs):
     bots = ["Googlebot", "Bingbot", "OAI-SearchBot", "ChatGPT-User", "GPTBot", "PerplexityBot", "Perplexity-User", "Claude-SearchBot",
             "Claude-User", "ClaudeBot", "Google-Extended", "Applebot", "Applebot-Extended", "DuckDuckBot", "CCBot", "Amazonbot", "meta-externalagent"]
     robots = "# Enablement Works welcomes search engines and AI answer engines.\n" + "".join(f"User-agent: {b}\nAllow: /\n\n" for b in bots)
-    robots += "User-agent: *\nAllow: /\n\nSitemap: " + SITE["url"] + "/sitemap.xml\n"
+    robots += "User-agent: *\nAllow: /\n\nSitemap: " + SITE["url"] + "/sitemap.xml\nSitemap: " + SITE["url"] + "/sitemap-video.xml\n"
     (OUT / "robots.txt").write_text(robots)
     # IndexNow key
     (OUT / f"{SITE['indexnow_key']}.txt").write_text(SITE["indexnow_key"])

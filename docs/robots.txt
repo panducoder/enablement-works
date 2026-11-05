@@ -54,3 +54,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://enablement.works/sitemap.xml
+Sitemap: https://enablement.works/sitemap-video.xml

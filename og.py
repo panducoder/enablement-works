@@ -16,9 +16,10 @@ def f(path, size, index=0):
         return ImageFont.load_default()
 
 
-HEAVY_IT = lambda s: f(AVENIR, s, 9)
-BOLD = lambda s: f(AVENIR, s, 0)
-MONO = lambda s: f(MENLO, s, 0)
+FONTS = Path(__file__).parent / "tools" / "fonts"
+HEAVY_IT = lambda s: f(str(FONTS / "Archivo-BlackItalic.ttf"), s)
+BOLD = lambda s: f(str(FONTS / "Archivo-ExtraBold.ttf"), s)
+MONO = lambda s: f(str(FONTS / "JetBrainsMono-Medium.ttf"), s)
 
 
 def fit(draw, title, max_w, max_lines=4):

@@ -4,3 +4,6 @@ __pycache__/
 content/BRIEF.md
 src/original-index.html
 .claude/
+video/*.wav
+video/*.mp4
+video/sheet_*.png

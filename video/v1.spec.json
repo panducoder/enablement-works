@@ -1,0 +1,15 @@
+{"audio": "v1.wav", "words": "v1.words.json", "beats": [
+ {"cue": "How many", "kind": "title", "bg": "cobalt", "eyebrow": "Enablement capacity", "text": "How many enablement people does your plan need?"},
+ {"cue": "Here is a rule", "kind": "number", "bg": "night", "eyebrow": "Our rule of thumb", "number": "1 : 25–50", "label": "One enablement person for every 25 to 50 quota-carrying reps"},
+ {"cue": "Count your reps", "kind": "list", "bg": "cobalt", "heading": "Do the arithmetic.", "items": [
+   {"cue": "Count your reps", "text": "Count your quota-carrying reps"},
+   {"cue": "Divide by", "text": "Divide by 50, then by 25", "note": "300 reps → 6 to 12 people"},
+   {"cue": "That is the range", "text": "That is the range your plan assumes"}]},
+ {"cue": "Now count", "kind": "seam", "bg": "paper", "before": "The plan assumes six.", "after": "You have two."},
+ {"cue": "It shows up", "kind": "list", "bg": "paper", "heading": "The gap shows up as…", "items": [
+   {"cue": "A kickoff", "text": "A kickoff with no follow-up"},
+   {"cue": "a launch", "text": "A launch reps learn from a slide deck"},
+   {"cue": "new hires", "text": "New hires who ramp by shadowing"}]},
+ {"cue": "The gap is not", "kind": "statement", "bg": "cobalt", "eyebrow": "Not a people problem", "text": "The work was sized. The hours were not."},
+ {"cue": "Put both numbers", "kind": "end", "bg": "night", "text": "Put both numbers on one page.", "url": "enablement.works/tools"}
+]}

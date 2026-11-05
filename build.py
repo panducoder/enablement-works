@@ -507,6 +507,8 @@ def site_files(guides, pages_, glossary, faqs):
             "Claude-User", "ClaudeBot", "Google-Extended", "Applebot", "Applebot-Extended", "DuckDuckBot", "CCBot", "Amazonbot", "meta-externalagent"]
     robots = "# Enablement Works welcomes search engines and AI answer engines.\n" + "".join(f"User-agent: {b}\nAllow: /\n\n" for b in bots)
     robots += "User-agent: *\nAllow: /\n\nSitemap: " + SITE["url"] + "/sitemap.xml\nSitemap: " + SITE["url"] + "/sitemap-video.xml\n"
+    for extra in sorted(STATIC.glob("*/**/sitemap*.xml")):  # sub-sites copied from static/, e.g. static/shift/sitemap.xml
+        robots += "Sitemap: " + SITE["url"] + "/" + extra.relative_to(STATIC).as_posix() + "\n"
     (OUT / "robots.txt").write_text(robots)
     # IndexNow key
     (OUT / f"{SITE['indexnow_key']}.txt").write_text(SITE["indexnow_key"])

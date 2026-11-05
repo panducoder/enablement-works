@@ -235,7 +235,7 @@ def home_page(c):
   </div>
 </section>
 <script>{SEAM_JS.replace('__CASES__', json.dumps(SEAM_CASES))}</script>"""
-    return c["page"]("/", "Enablement Works: sales enablement, built and run", S["description"], main, graph, current="/", tone="dark")
+    return c["page"]("/", "Enablement Works: sales enablement, built and run", "The production and operations engine for B2B sales enablement teams. You set the strategy; we build, run and report to your CRO. Free guides and calculators.", main, graph, current="/", tone="dark")
 
 
 # ---------------------------------------------------------------- the board (guides hub)
@@ -325,7 +325,7 @@ def guides_hub(c):
   </div>
 </section>
 <script>{BOARD_JS}</script>"""
-    return c["page"]("/guides/", "Sales enablement guides: metrics, team size, ROI, coaching and AI",
+    return c["page"]("/guides/", "Sales enablement guides by role and topic",
                      "Free sales enablement guides, filterable by role and topic: metrics, team size, ROI, onboarding, coaching, kickoff follow-up, AI roleplay and AI agents.",
                      main, graph, current="/guides/", tone="cobalt")
 
@@ -456,11 +456,11 @@ def tools_pages(c):
         {"q": "What usage rate should an enablement tool reach?", "a": "As our rule of thumb, 70% or more of licensed reps active each month is healthy for a core tool. Between 40% and 70%, find out which teams are inactive. Below 40%, fix the operations before you renew or switch."},
     ]
     tools = [
-        ("/tools/enablement-capacity-calculator/", "Sales enablement capacity calculator: how many enablement people do you need?",
+        ("/tools/enablement-capacity-calculator/", "Sales enablement team size calculator",
          'How many enablement people does your plan <span class="under-coral">need?</span>', "Enter your reps, hires, launches and kickoffs. See the hours your sales plan needs, the people that takes, and the gap against your team today.",
          "Free calculator: enter reps, hires, launches and kickoffs to see the enablement hours your sales plan needs and how many enablement people that takes.",
          cap_body, cap_howto, cap_faqs, CAPACITY_JS, "Enablement capacity calculator"),
-        ("/tools/cost-per-active-user-calculator/", "Cost per active user calculator for sales enablement tools",
+        ("/tools/cost-per-active-user-calculator/", "Cost per active user calculator for enablement tools",
          'What does each active user <span class="under-coral">really</span> cost?', "Enter the annual cost, licensed seats and active reps for each enablement tool. See the real price per rep who uses it, and what idle seats cost you.",
          "Free calculator: find the cost per active user of your LMS, content platform and roleplay tool before renewal. Formula, thresholds and what to do next.",
          cpau_body, cpau_howto, cpau_faqs, CPAU_JS, "Cost per active user calculator"),

@@ -188,7 +188,7 @@ def page(path, title, description, main, graph, og_image="/og/default.png", og_t
     cur = ' aria-current="page"'
     nav = "".join(f'<a class="sitenav__link{" keep" if u == "/guides/" else ""}" href="{u}"{cur if current == u else ""}>{n}</a>' for u, n in NAV)
     ld = json.dumps({"@context": "https://schema.org", "@graph": [org_node(), website_node()] + graph}, ensure_ascii=False, separators=(",", ":"))
-    full_title = title if SITE["name"] in title else f"{title} · {SITE['name']}"
+    full_title = title if (SITE["name"] in title or len(title) > 52) else f"{title} · {SITE['name']}"
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -364,8 +364,19 @@ def render_doc(d, by_slug, crumbs):
         graph.append(video_node(d["slug"], url))
     extra = f'<link rel="alternate" type="text/markdown" href="{d["path"].rstrip("/")}.md">\n'
     extra += f'<meta property="article:published_time" content="{d["published"]}"><meta property="article:modified_time" content="{d["updated"]}">\n'
-    return page(d["path"], d["title"], d.get("description", ""), main, graph, og_image=f"/og/{d['slug']}.png", og_type="article",
+    return page(d["path"], seo_title(d["title"]), d.get("description", ""), main, graph, og_image=f"/og/{d['slug']}.png", og_type="article",
                 current="/guides/" if d["kind"] == "guide" else d["path"], extra_head=extra, tone="light")
+
+
+def seo_title(title):
+    """Short <title> for search results: keep the question or the part before the colon when the full title is long."""
+    if len(title) <= 60:
+        return title
+    m = re.match(r"^(.{20,70}?[?:])\s", title)
+    if m:
+        t = m.group(1).rstrip(":")
+        return t
+    return title
 
 
 def fmt_date(s):

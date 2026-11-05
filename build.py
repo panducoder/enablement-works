@@ -188,7 +188,7 @@ def page(path, title, description, main, graph, og_image="/og/default.png", og_t
     cur = ' aria-current="page"'
     nav = "".join(f'<a class="sitenav__link{" keep" if u == "/guides/" else ""}" href="{u}"{cur if current == u else ""}>{n}</a>' for u, n in NAV)
     ld = json.dumps({"@context": "https://schema.org", "@graph": [org_node(), website_node()] + graph}, ensure_ascii=False, separators=(",", ":"))
-    full_title = title if title.endswith(SITE["name"]) else f"{title} · {SITE['name']}"
+    full_title = title if SITE["name"] in title else f"{title} · {SITE['name']}"
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -213,14 +213,14 @@ def page(path, title, description, main, graph, og_image="/og/default.png", og_t
 <link rel="alternate" type="application/atom+xml" title="Enablement Works guides" href="/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800;1,900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="stylesheet" href="/assets/site.css?v=5">
 {extra_head}<script type="application/ld+json">{ld}</script>
 </head>
 <body>
 <a class="skiplink" href="#main">Skip to content</a>
 <header class="sitenav" data-tone="{tone}">
   <a class="sitenav__home" href="/" aria-label="Enablement Works, home">{WORDMARK}</a>
-  <nav class="sitenav__links" aria-label="Main">{nav}<a class="sitenav__cta" href="/#capacity-check">Capacity Check</a></nav>
+  <nav class="sitenav__links" aria-label="Main">{nav}<a class="sitenav__cta" href="/#capacity-check"><span class="long">Capacity Check</span><span class="short">Book a call</span></a></nav>
 </header>
 <main id="main">
 {main}

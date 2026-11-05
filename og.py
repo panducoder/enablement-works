@@ -1,69 +1,81 @@
-"""Open Graph images (1200x630) and logo/favicon PNGs, drawn with Pillow in the Ledger style."""
+"""Open Graph images (1200x630), logo and favicons in The Shift language: newsprint before, cobalt after, coral seam."""
 import textwrap
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-SUP = "/System/Library/Fonts/Supplemental/"
-BG, INK, PRIMARY, ACCENT, MUTED, LINE = "#F5F6F3", "#15201C", "#14453D", "#87600F", "#58635E", "#D8DCD6"
+AVENIR = "/System/Library/Fonts/Avenir Next.ttc"
+MENLO = "/System/Library/Fonts/Menlo.ttc"
+COBALT, COBALT_DEEP, CORAL, PAPER, NEWS, INK, WHITE, SOFT = "#1530FF", "#0D1FB8", "#FF5A5F", "#E4E1DA", "#9C9890", "#0B0D17", "#FFFFFF", "#D6DBFF"
 
 
-def font(name, size):
+def f(path, size, index=0):
     try:
-        return ImageFont.truetype(SUP + name, size)
+        return ImageFont.truetype(path, size, index=index)
     except OSError:
         return ImageFont.load_default()
 
 
-def fit_title(draw, title, max_w, max_lines=4):
-    for size in (68, 62, 56, 50, 46, 42):
-        f = font("Georgia.ttf", size)
-        for width in range(40, 10, -1):
+HEAVY_IT = lambda s: f(AVENIR, s, 9)
+BOLD = lambda s: f(AVENIR, s, 0)
+MONO = lambda s: f(MENLO, s, 0)
+
+
+def fit(draw, title, max_w, max_lines=4):
+    for size in (78, 70, 64, 58, 52, 46):
+        font = HEAVY_IT(size)
+        for width in range(34, 8, -1):
             lines = textwrap.wrap(title, width=width)
-            if len(lines) <= max_lines and all(draw.textlength(l, font=f) <= max_w for l in lines):
-                return f, lines, size
-    f = font("Georgia.ttf", 42)
-    return f, textwrap.wrap(title, 44)[:max_lines], 42
+            if len(lines) <= max_lines and all(draw.textlength(l, font=font) <= max_w for l in lines):
+                return font, lines, size
+    return HEAVY_IT(46), textwrap.wrap(title, 40)[:max_lines], 46
+
+
+def wordmark(draw, x, y, size, fill):
+    font = HEAVY_IT(size)
+    draw.text((x, y), "Enablement", font=font, fill=fill)
+    w = draw.textlength("Enablement", font=font)
+    sx = x + w + size * 0.18
+    draw.line([sx + size * 0.38, y + size * 0.18, sx + size * 0.02, y + size * 1.02], fill=CORAL, width=max(3, size // 9))
+    draw.text((sx + size * 0.55, y), "Works", font=font, fill=fill)
 
 
 def og_image(path, title, label):
-    im = Image.new("RGB", (1200, 630), BG)
+    im = Image.new("RGB", (1200, 630), COBALT)
     d = ImageDraw.Draw(im)
-    d.rectangle([0, 0, 1200, 14], fill=PRIMARY)
-    # double rule, the Ledger signature
-    d.line([72, 92, 1128, 92], fill=INK, width=2)
-    d.line([72, 100, 1128, 100], fill=INK, width=2)
-    d.text((72, 48), label.upper(), font=font("Courier New Bold.ttf", 24), fill=ACCENT)
-    f, lines, size = fit_title(d, title, 1056)
-    y = 140
+    # newsprint "before" strip on the left, coral seam line
+    d.rectangle([0, 0, 64, 630], fill=PAPER)
+    d.rectangle([64, 0, 70, 630], fill=CORAL)
+    d.rounded_rectangle([110, 54, 110 + d.textlength(label.upper(), font=MONO(22)) + 28, 92], radius=6, fill=CORAL)
+    d.text((124, 61), label.upper(), font=MONO(22), fill=WHITE)
+    font, lines, size = fit(d, title, 1000)
+    y = 132
     for line in lines:
-        d.text((72, y), line, font=f, fill=INK)
-        y += int(size * 1.18)
-    d.line([72, 530, 1128, 530], fill=LINE, width=2)
-    d.text((72, 552), "Enablement Works", font=font("Georgia Bold.ttf", 34), fill=PRIMARY)
-    d.text((1128, 560), "enablement.works", font=font("Courier New.ttf", 26), fill=MUTED, anchor="ra")
+        d.text((110, y), line, font=font, fill=WHITE)
+        y += int(size * 1.02)
+    wordmark(d, 110, 548, 38, WHITE)
+    d.text((1140, 560), "enablement.works", font=MONO(24), fill=SOFT, anchor="ra")
     im.save(path, optimize=True)
 
 
 def logo(path, size):
-    im = Image.new("RGB", (size, size), PRIMARY)
+    im = Image.new("RGB", (size, size), COBALT)
     d = ImageDraw.Draw(im)
-    f = font("Georgia Bold.ttf", int(size * 0.5))
-    d.text((size / 2, size / 2 + size * 0.02), "EW", font=f, fill="#FFFFFF", anchor="mm")
-    d.line([size * 0.2, size * 0.8, size * 0.8, size * 0.8], fill="#D6A54A", width=max(2, size // 40))
+    d.text((size * 0.47, size * 0.5), "EW", font=HEAVY_IT(int(size * 0.5)), fill=WHITE, anchor="mm")
+    d.line([size * 0.72, size * 0.18, size * 0.56, size * 0.84], fill=CORAL, width=max(2, size // 22))
     im.save(path, optimize=True)
 
 
 def build_all(out: Path, site, docs):
     (out / "og").mkdir(exist_ok=True)
     (out / "assets").mkdir(exist_ok=True)
-    og_image(out / "og" / "default.png", "Your enablement strategy, built and run.", "Sales enablement production and operations")
-    for d in docs:
-        og_image(out / "og" / f"{d['slug']}.png", d["title"], d.get("category", "Guide"))
+    og_image(out / "og" / "default.png", "Your enablement strategy, built and run.", "Sales enablement · built and run")
+    for doc in docs:
+        og_image(out / "og" / f"{doc['slug']}.png", doc["title"], doc.get("category", "Guide"))
     for s in (512, 180, 32):
         logo(out / "assets" / f"logo-{s}.png", s)
     Image.open(out / "assets" / "logo-32.png").save(out / "favicon.ico", sizes=[(32, 32)])
     (out / "favicon.svg").write_text(
-        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="6" fill="#14453D"/>'
-        '<text x="32" y="41" font-family="Georgia,serif" font-weight="700" font-size="30" fill="#fff" text-anchor="middle">EW</text>'
-        '<rect x="13" y="50" width="38" height="3" fill="#D6A54A"/></svg>')
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="10" fill="#1530FF"/>'
+        '<text x="29" y="43" font-family="Archivo,Arial,sans-serif" font-style="italic" font-weight="900" font-size="30" fill="#fff" text-anchor="middle">EW</text>'
+        '<path d="M48 10 L38 54" stroke="#FF5A5F" stroke-width="4" stroke-linecap="round"/></svg>')

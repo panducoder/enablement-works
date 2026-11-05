@@ -117,20 +117,52 @@ def crumbs_node(trail):
 def crumbs_html(trail):
     items = "".join(f'<li><a href="{u}">{esc(n)}</a></li>' if i < len(trail) - 1 else f'<li aria-current="page">{esc(n)}</li>'
                     for i, (u, n) in enumerate(trail))
-    return f'<nav class="crumbs" aria-label="Breadcrumb"><ol>{items}</ol></nav>'
+    return f'<nav class="case__crumbs" aria-label="Breadcrumb"><ol>{items}</ol></nav>'
 
 
-def page(path, title, description, main, graph, og_image="/og/default.png", og_type="website", current="", extra_head=""):
+ROLE_NAMES = {"cro": "CROs", "enablement": "Enablement leaders", "manager": "Sales managers", "revops": "RevOps"}
+ROLE_TAG = {"cro": "CRO", "enablement": "Enablement", "manager": "Managers", "revops": "RevOps"}
+ROLES = {
+    "what-is-sales-enablement": ["cro", "enablement", "manager", "revops"],
+    "sales-enablement-vs-sales-training": ["enablement", "cro"],
+    "sales-enablement-roadmap": ["enablement", "cro"],
+    "sales-enablement-metrics": ["cro", "enablement", "revops"],
+    "measuring-sales-training-effectiveness": ["enablement", "revops"],
+    "sales-skills-scorecard": ["enablement", "manager"],
+    "enablement-report-for-cro": ["cro", "enablement"],
+    "enablement-pilot-design": ["enablement", "revops"],
+    "sales-enablement-team-size": ["cro", "enablement"],
+    "sales-enablement-roi": ["cro", "enablement", "revops"],
+    "cost-per-active-user": ["revops", "enablement", "cro"],
+    "outsourced-sales-enablement": ["cro", "enablement"],
+    "sales-kickoff-follow-up": ["enablement", "manager", "cro"],
+    "sales-coaching-coverage": ["manager", "cro", "enablement"],
+    "sales-manager-reinforcement": ["manager", "enablement"],
+    "continuous-sales-training": ["enablement", "manager"],
+    "sales-onboarding-program": ["enablement", "manager"],
+    "ai-in-sales-enablement": ["enablement", "cro", "revops"],
+    "ai-roleplay-sales-training": ["enablement", "manager"],
+    "ai-agents-sales-enablement": ["revops", "enablement"],
+    "buying-group-consensus": ["manager", "cro"],
+    "problem-first-selling": ["manager", "enablement"],
+    "sales-enablement-statistics": ["cro", "enablement", "revops", "manager"],
+}
+
+WORDMARK = ('<span class="wordmark">Enablement<svg class="wordmark__slash" viewBox="0 0 12 20" aria-hidden="true">'
+            '<path d="M10 2 L2 18"/></svg>Works</span>')
+
+
+def page(path, title, description, main, graph, og_image="/og/default.png", og_type="website", current="", extra_head="", tone="light"):
     url = SITE["url"] + path
     cur = ' aria-current="page"'
-    nav = "".join(f'<a href="{u}"{cur if current == u else ""}>{n}</a>' for u, n in NAV)
+    nav = "".join(f'<a class="sitenav__link{" keep" if u == "/guides/" else ""}" href="{u}"{cur if current == u else ""}>{n}</a>' for u, n in NAV)
     ld = json.dumps({"@context": "https://schema.org", "@graph": [org_node(), website_node()] + graph}, ensure_ascii=False, separators=(",", ":"))
     full_title = title if title.endswith(SITE["name"]) else f"{title} · {SITE['name']}"
     return f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{esc(full_title)}</title>
 <meta name="description" content="{esc(description)}">
 <link rel="canonical" href="{url}">
@@ -143,24 +175,21 @@ def page(path, title, description, main, graph, og_image="/og/default.png", og_t
 <meta property="og:image" content="{SITE['url']}{og_image}">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#14453D">
-<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#1530FF">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="/assets/logo-180.png">
 <link rel="alternate" type="application/atom+xml" title="Enablement Works guides" href="/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&family=Red+Hat+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=3">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800;1,900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
 {extra_head}<script type="application/ld+json">{ld}</script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="mast">
-  <div class="wrap">
-    <a class="word" href="/" aria-label="Enablement Works, home">Enablement Works</a>
-    <nav aria-label="Main">{nav}<a class="btn btn-sm" href="/#capacity-check">Capacity Check</a></nav>
-  </div>
+<a class="skiplink" href="#main">Skip to content</a>
+<header class="sitenav" data-tone="{tone}">
+  <a class="sitenav__home" href="/" aria-label="Enablement Works, home">{WORDMARK}</a>
+  <nav class="sitenav__links" aria-label="Main">{nav}<a class="sitenav__cta" href="/#capacity-check">Capacity Check</a></nav>
 </header>
 <main id="main">
 {main}
@@ -171,18 +200,22 @@ def page(path, title, description, main, graph, og_image="/og/default.png", og_t
 """
 
 
+TICKER = []
+
+
 def footer():
     g = "".join(f'<li><a href="/guides/{s}/">{esc(t)}</a></li>' for s, t in FOOTER_GUIDES)
-    return f"""<footer class="site">
-  <div class="wrap">
-    <div class="cols">
-      <div><h2>Enablement Works</h2><p>{esc(SITE['tagline'])}. Your team sets the strategy. We build, run and report.</p><p><a href="mailto:{SITE['email']}">{SITE['email']}</a></p></div>
-      <div><h2>Guides</h2><ul>{g}<li><a href="/guides/">All guides</a></li></ul></div>
-      <div><h2>Resources</h2><ul><li><a href="/tools/enablement-capacity-calculator/">Capacity calculator</a></li><li><a href="/tools/cost-per-active-user-calculator/">Cost per active user</a></li><li><a href="/sales-enablement-statistics/">Statistics</a></li><li><a href="/glossary/">Glossary</a></li><li><a href="/faq/">FAQ</a></li></ul></div>
-      <div><h2>Company</h2><ul><li><a href="/about/">About</a></li><li><a href="/#offer">The offer</a></li><li><a href="/#capacity-check">Capacity Check</a></li><li><a href="/privacy/">Privacy</a></li><li><a href="/feed.xml">RSS</a></li><li><a href="/llms.txt">llms.txt</a></li></ul></div>
-    </div>
-    <p class="legal">© 2026 Enablement Works. Guides may be quoted with a link to the source page.</p>
+    run = "".join(f'<a class="ticker__item" href="{u}"><b>{esc(k)}</b>{esc(t)}</a>' for u, k, t in TICKER)
+    ticker = f'<div class="ticker" aria-hidden="true"><div class="ticker__run">{run}{run}</div></div>' if run else ""
+    return f"""<footer class="sitefooter">
+  {ticker}
+  <div class="sitefooter__inner">
+    <div>{WORDMARK.replace('class="wordmark"', 'class="wordmark" style="font-size:26px"')}<p class="sitefooter__line">{esc(SITE['tagline'])}. Your team sets the strategy. We build, run and report.</p><p class="sitefooter__line"><a href="mailto:{SITE['email']}">{SITE['email']}</a></p></div>
+    <div><h2>Guides</h2><ul class="sitefooter__nav">{g}<li><a href="/guides/">All guides →</a></li></ul></div>
+    <div><h2>Resources</h2><ul class="sitefooter__nav"><li><a href="/tools/enablement-capacity-calculator/">Capacity calculator</a></li><li><a href="/tools/cost-per-active-user-calculator/">Cost per active user</a></li><li><a href="/sales-enablement-statistics/">Statistics</a></li><li><a href="/glossary/">Glossary</a></li><li><a href="/faq/">FAQ</a></li></ul></div>
+    <div><h2>Company</h2><ul class="sitefooter__nav"><li><a href="/about/">About</a></li><li><a href="/#offer">The offer</a></li><li><a href="/#capacity-check">Capacity Check</a></li><li><a href="/privacy/">Privacy</a></li><li><a href="/feed.xml">RSS</a> · <a href="/llms.txt">llms.txt</a></li></ul></div>
   </div>
+  <div class="wrap"><p class="samplenote" style="padding-bottom:28px">© 2026 Enablement Works. Guides may be quoted with a link to the source page. Rules of thumb are ours; every outside number links to its source.</p></div>
 </footer>"""
 
 
@@ -190,16 +223,37 @@ FOOTER_GUIDES = []
 
 # ---------------------------------------------------------------- page types
 
+def roles_of(d):
+    return ROLES.get(d["slug"], ["enablement"])
+
+
+def row(d, rank, by_rank=True):
+    """A ledger row (The Shift's .shiftrow) for a guide or page."""
+    roles = roles_of(d)
+    tags = "".join(f'<span class="tag tag--role">{ROLE_TAG[r]}</span>' for r in roles[:2])
+    tags += f'<span class="tag tag--topic">{esc(d.get("category", "Guide"))}</span>'
+    chips = "".join(f"<li>{esc(q)}</li>" for q in ([d.get("primary_query")] + (d.get("related_queries") or [])[:1]) if q)
+    cat = CATEGORY_SLUG.get(d.get("category", ""), "other")
+    hay = " ".join([d["title"], d.get("description", ""), d.get("primary_query", "")] + (d.get("related_queries") or [])).lower()
+    return (f'<li class="shiftrow" data-topic="{cat}" data-roles="{" ".join(roles)}" data-format="{ {"page": "reference", "tool": "tool"}.get(d["kind"], "guide") }" '
+            f'data-minutes="{d["minutes"]}" data-updated="{d["updated"]}" data-rank="{rank}" data-hay="{esc(hay)}">'
+            f'<span class="shiftrow__rank">{rank:02d}</span>'
+            f'<a class="shiftrow__thumb" href="{d["path"]}" tabindex="-1" aria-hidden="true"><img src="/og/{d["slug"]}.png" alt="" loading="lazy" width="1200" height="630"></a>'
+            f'<div class="shiftrow__main"><a class="shiftrow__title" href="{d["path"]}">{esc(d["title"])}</a>'
+            f'<p class="shiftrow__desc">{esc(d.get("description", ""))}</p><div class="shiftrow__tags">{tags}</div></div>'
+            f'<ul class="stackchips">{chips}</ul><span class="shiftrow__x">{d["minutes"]} min</span></li>')
+
+
 def card(d):
-    return (f'<article class="card"><span class="cat">{esc(d.get("category", ""))}</span>'
-            f'<h3><a href="{d["path"]}">{esc(d["title"])}</a></h3><p>{esc(d.get("description", ""))}</p></article>')
+    return row(d, 1)
 
 
-def faq_html(faqs, heading="Frequently asked questions"):
+def faq_html(faqs, heading="Frequently asked questions", open_first=False):
     if not faqs:
         return ""
-    qs = "".join(f'<div class="qa"><h3>{esc(f["q"])}</h3><p>{inline_md(f["a"])}</p></div>' for f in faqs)
-    return f'<section class="faqs" aria-labelledby="faq-h"><h2 id="faq-h">{heading}</h2>{qs}</section>'
+    qs = "".join(f'<details class="faq__item"{" open" if (open_first and i == 0) else ""}><summary>{esc(f["q"])}</summary><p class="faq__a">{inline_md(f["a"])}</p></details>'
+                 for i, f in enumerate(faqs))
+    return f'<section class="faqs" aria-labelledby="faq-h"><h2 id="faq-h">{heading}</h2><div class="faq">{qs}</div></section>'
 
 
 def inline_md(s):
@@ -214,34 +268,53 @@ def faq_node(faqs, url):
         {"@type": "Question", "name": f["q"], "acceptedAnswer": {"@type": "Answer", "text": re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", f["a"])}} for f in faqs]}
 
 
+SHARE_JS = """<script>
+document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>{const t=b.getAttribute('data-copy')==='url'?location.href:document.getElementById(b.getAttribute('data-copy')).innerText;navigator.clipboard&&navigator.clipboard.writeText(t).then(()=>{const o=b.textContent;b.textContent='Copied';setTimeout(()=>b.textContent=o,1600)})}));
+</script>"""
+
+
 def render_doc(d, by_slug, crumbs):
+    from urllib.parse import quote
     url = SITE["url"] + d["path"]
     toc = "".join(f'<li><a href="#{i}">{esc(n)}</a></li>' for i, n in d["toc"])
     takeaways = "".join(f"<li>{inline_md(t)}</li>" for t in d.get("key_takeaways") or [])
-    sources = "".join(f'<li><a href="{esc(s.get("url"))}" rel="noopener">{esc(s.get("title"))}</a></li>' for s in d.get("sources") or [] if s.get("url"))
+    srcs = [s for s in d.get("sources") or [] if s.get("url")]
+    sources = "".join(f'<li><a href="{esc(s.get("url"))}" rel="noopener">{esc(s.get("title"))}</a></li>' for s in srcs)
     related = [by_slug[s] for s in d.get("related") or [] if s in by_slug][:4]
-    related_html = (f'<section class="related"><div class="wrap"><h2>Related guides</h2><div class="cards">{"".join(card(r) for r in related)}</div></div></section>') if related else ""
+    related_html = (f'<section class="sec sec--cobalt"><div class="wrap"><div class="sec__head"><h2 class="sec__title">Read next.</h2>'
+                    f'<p class="sec__lede">Guides that answer the next question people ask after this one.</p></div>'
+                    f'<ol class="ledger">{"".join(row(r, i + 1) for i, r in enumerate(related))}</ol>'
+                    f'<a class="cta-banner" href="/guides/">Open every guide, filtered by role and topic</a></div></section>') if related else ""
     answer = d.get("answer", "")
-    main = f"""<header class="page-head"><div class="wrap">
+    roles = "".join(f'<a class="tag tag--role" href="/guides/?role={r}">{ROLE_TAG[r]}</a>' for r in roles_of(d))
+    q = quote(url, safe="")
+    t = quote(d["title"], safe="")
+    main = f"""<article class="case wrap">
   {crumbs_html(crumbs)}
-  <h1>{esc(d['title'])}</h1>
-  <p class="byline"><span>{esc(d.get('category', 'Guide'))}</span><span>Updated <time datetime="{d['updated']}">{fmt_date(d['updated'])}</time></span><span>{d['minutes']} min read</span><span>By the Enablement Works editorial team</span></p>
-</div></header>
-<div class="wrap"><div class="article">
-  <article class="article-main">
-    {f'<section class="answer" aria-labelledby="answer-h"><h2 id="answer-h">Short answer</h2><p>{inline_md(answer)}</p></section>' if answer else ''}
-    {f'<section class="takeaways"><h2>Key takeaways</h2><ul>{takeaways}</ul></section>' if takeaways else ''}
-    <div class="body">{d['body_html']}</div>
-    {faq_html(d.get('faqs'))}
-    {f'<section class="sources"><h2>Sources</h2><ol>{sources}</ol></section>' if sources else ''}
-    <aside class="inline-cta"><p>Want to know how much enablement work your plan needs, and how much your team can deliver? The Capacity Check takes 20 minutes and is free.</p><a class="btn" href="/#capacity-check">Book a Capacity Check</a></aside>
-  </article>
-  <aside class="aside">
-    {f'<nav class="toc" aria-label="On this page"><h2>On this page</h2><ol>{toc}</ol></nav>' if toc else ''}
-    <div class="box"><p><strong>Free tools</strong></p><p><a href="/tools/enablement-capacity-calculator/">Enablement capacity calculator</a></p><p><a href="/tools/cost-per-active-user-calculator/">Cost per active user calculator</a></p></div>
-  </aside>
-</div></div>
-{related_html}"""
+  <header class="case__head">
+    <div class="case__tags"><a class="tag tag--ink" href="/guides/?topic={CATEGORY_SLUG.get(d.get('category', ''), '')}">{esc(d.get('category', 'Guide'))}</a>{roles}</div>
+    <h1 class="case__title">{esc(d['title'])}</h1>
+    <p class="case__byline"><span>Updated <time datetime="{d['updated']}">{fmt_date(d['updated'])}</time></span><span>{d['minutes']} min read</span><span>{len(srcs)} sources</span><span>Enablement Works editorial team</span></p>
+  </header>
+  <div class="case__grid">
+    <div class="case__main">
+      {f'<section class="takeaways"><h2>Key takeaways</h2><ul class="ticklist">{takeaways}</ul></section>' if takeaways else ''}
+      <div class="body">{d['body_html']}</div>
+      {faq_html(d.get('faqs'), open_first=True)}
+      {f'<section class="sources"><h2>Sources</h2><ol>{sources}</ol></section>' if sources else ''}
+      <section class="share" aria-labelledby="share-h"><h2 class="share__title" id="share-h">Share this guide</h2>
+        <div class="share__row"><button type="button" data-copy="url">Copy link</button><a href="https://www.linkedin.com/sharing/share-offsite/?url={q}" rel="noopener" target="_blank">LinkedIn</a><a href="https://x.com/intent/post?url={q}&amp;text={t}" rel="noopener" target="_blank">X</a><a href="mailto:?subject={t}&amp;body={q}">Email</a><a href="{d['path'].rstrip('/')}.md">Markdown</a></div></section>
+      <aside class="cta-cobalt"><h2>How much enablement work does your plan need?</h2><p>The Capacity Check takes 20 minutes with your CRO and head of enablement. You get a scored summary and a capacity estimate the next day. Free.</p><a class="btn-block" href="/#capacity-check">Book a Capacity Check</a></aside>
+    </div>
+    <aside class="case__side">
+      {f'<section class="move" aria-labelledby="answer-h"><h2 class="move__title" id="answer-h">The short answer</h2><p class="move__text" id="short-answer">{inline_md(answer)}</p><button type="button" class="slab" data-copy="short-answer">Copy the answer</button><p class="move__hint">Quote it with a link to this page.</p></section>' if answer else ''}
+      <dl class="specs"><div><dt>Updated</dt><dd>{fmt_date(d['updated'])}</dd></div><div><dt>Read</dt><dd>{d['minutes']} min</dd></div><div><dt>Topic</dt><dd>{esc(d.get('category', 'Guide'))}</dd></div><div><dt>Sources</dt><dd>{len(srcs)} linked</dd></div></dl>
+      {f'<nav class="toc" aria-label="On this page"><h2>On this page</h2><ol>{toc}</ol></nav>' if toc else ''}
+    </aside>
+  </div>
+</article>
+{related_html}
+{SHARE_JS}"""
     graph = [{
         "@type": "Article", "@id": url + "#article", "headline": d["title"][:110], "description": d.get("description", ""),
         "abstract": answer, "url": url, "mainEntityOfPage": url, "datePublished": d["published"], "dateModified": d["updated"],
@@ -249,21 +322,24 @@ def render_doc(d, by_slug, crumbs):
         "image": f"{SITE['url']}/og/{d['slug']}.png", "articleSection": d.get("category", ""), "wordCount": d["words"],
         "keywords": ", ".join([d.get("primary_query", "")] + (d.get("related_queries") or [])),
         "about": {"@type": "Thing", "name": d.get("primary_query", d["title"])},
-        "citation": [s.get("url") for s in d.get("sources") or [] if s.get("url")],
+        "audience": [{"@type": "Audience", "audienceType": ROLE_NAMES[r]} for r in roles_of(d)],
+        "citation": [s.get("url") for s in srcs],
+        "speakable": {"@type": "SpeakableSpecification", "cssSelector": ["#short-answer"]},
     }, crumbs_node(crumbs)]
     if d.get("faqs"):
         graph.append(faq_node(d["faqs"], url))
     extra = f'<link rel="alternate" type="text/markdown" href="{d["path"].rstrip("/")}.md">\n'
     extra += f'<meta property="article:published_time" content="{d["published"]}"><meta property="article:modified_time" content="{d["updated"]}">\n'
     return page(d["path"], d["title"], d.get("description", ""), main, graph, og_image=f"/og/{d['slug']}.png", og_type="article",
-                current="/guides/" if d["kind"] == "guide" else d["path"], extra_head=extra)
+                current="/guides/" if d["kind"] == "guide" else d["path"], extra_head=extra, tone="light")
 
 
 def fmt_date(s):
     try:
-        return dt.datetime.strptime(s, "%Y-%m-%d").strftime("%-d %B %Y")
+        return dt.datetime.strptime(s, "%Y-%m-%d").strftime("%-d %b %Y")
     except ValueError:
         return s
+
 
 # ---------------------------------------------------------------- output helpers
 
@@ -280,7 +356,7 @@ def write(path, content, lastmod=None, priority=0.6, sitemap=True):
         WRITTEN.append((path, lastmod or SITE["today"], priority))
 
 
-from pages import home_page, tools_pages, about_page, privacy_page, not_found_page, glossary_page, faq_page, guides_hub  # noqa: E402
+from pages import TOOL_DOCS, home_page, tools_pages, about_page, privacy_page, not_found_page, glossary_page, faq_page, guides_hub  # noqa: E402
 import og  # noqa: E402
 
 
@@ -299,10 +375,11 @@ def main():
     glossary = load_yaml("glossary.yaml")
     faqs = load_yaml("faq.yaml")
     FOOTER_GUIDES[:] = [(s, by_slug[s]["title"].split(":")[0]) for s in FEATURED if s in by_slug][:5]
+    TICKER[:] = [(d["path"], f'{d["minutes"]} min', d["title"].split(":")[0]) for d in guides]
 
     ctx = dict(SITE=SITE, page=page, card=card, esc=esc, crumbs_html=crumbs_html, crumbs_node=crumbs_node, faq_html=faq_html,
                faq_node=faq_node, inline_md=inline_md, ORG_ID=ORG_ID, WEB_ID=WEB_ID, by_slug=by_slug, guides=guides,
-               FEATURED=FEATURED, CATEGORY_ORDER=CATEGORY_ORDER, CATEGORY_SLUG=CATEGORY_SLUG, glossary=glossary, faqs=faqs)
+               FEATURED=FEATURED, CATEGORY_ORDER=CATEGORY_ORDER, row=row, roles_of=roles_of, ROLE_NAMES=ROLE_NAMES, ROLE_TAG=ROLE_TAG, WORDMARK=WORDMARK, SHARE_JS=SHARE_JS, CATEGORY_SLUG=CATEGORY_SLUG, glossary=glossary, faqs=faqs)
 
     write("/", home_page(ctx), priority=1.0)
     write("/guides/", guides_hub(ctx), priority=0.9)
@@ -323,7 +400,7 @@ def main():
     write("/404.html", not_found_page(ctx), sitemap=False)
 
     site_files(guides, pages_, glossary, faqs)
-    og.build_all(OUT, SITE, guides + pages_)
+    og.build_all(OUT, SITE, guides + pages_ + TOOL_DOCS)
     print(f"Built {len(WRITTEN)} pages: {len(guides)} guides, {len(pages_)} pages, {len(glossary)} terms, {len(faqs)} FAQs")
 
 

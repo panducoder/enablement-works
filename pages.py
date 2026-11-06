@@ -557,7 +557,7 @@ def privacy_page(c):
     main = f"""<article class="case wrap" style="max-width:900px">{c['crumbs_html'](trail)}
 <header class="case__head"><h1 class="case__title">Privacy.</h1><p class="case__byline"><span>Last updated 6 Nov 2026</span></p></header>
 <div class="body">
-<p>This website does not use cookies, analytics, advertising trackers or forms. The calculators run in your browser; nothing you type is sent to us.</p>
+<p>{"This website does not use cookies, advertising trackers or forms. It counts visits with Cloudflare Web Analytics, which sets no cookies and does not identify you." if S.get("cf_beacon_token") else "This website does not use cookies, analytics, advertising trackers or forms."} The calculators run in your browser; nothing you type is sent to us.</p>
 <p>The site is hosted on GitHub Pages, which may log visitor IP addresses for security. Fonts load from Google Fonts, which may receive your IP address. See the privacy policies of GitHub and Google for details.</p>
 <p>If you email us, we use your message only to reply and to provide the service you ask about. We do not sell or share it. To ask what we hold about you, or to have it deleted, email <a href="mailto:{S['email']}">{S['email']}</a>.</p>
 </div></article>"""

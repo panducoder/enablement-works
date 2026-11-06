@@ -30,6 +30,8 @@ SITE = {
     "description": "Enablement Works is the production and operations engine for B2B sales enablement teams. Your team sets the strategy. We build the content, roleplays and programs in your tools, run them, drive completion and report results to your CRO every month.",
     "indexnow_key": "8f3c1e7a52b94d06a1e2c9f4b7d05e63",
     "today": "2026-11-06",
+    # Cookie-free Cloudflare Web Analytics. Paste the site token here to turn it on; the privacy page updates itself.
+    "cf_beacon_token": "",
 }
 CATEGORY_ORDER = ["Fundamentals", "Measurement", "Capacity and ROI", "Programs", "Coaching", "AI and agents", "Buyer-first selling"]
 CATEGORY_SLUG = {c: re.sub(r"[^a-z0-9]+", "-", c.lower()).strip("-") for c in CATEGORY_ORDER}
@@ -214,7 +216,7 @@ def page(path, title, description, main, graph, og_image="/og/default.png", og_t
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800;1,900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css?v=5">
-{extra_head}<script type="application/ld+json">{ld}</script>
+{extra_head}{analytics_tag()}<script type="application/ld+json">{ld}</script>
 </head>
 <body>
 <a class="skiplink" href="#main">Skip to content</a>
@@ -229,6 +231,11 @@ def page(path, title, description, main, graph, og_image="/og/default.png", og_t
 </body>
 </html>
 """
+
+
+def analytics_tag():
+    t = SITE.get("cf_beacon_token")
+    return f"<script defer src=\"https://static.cloudflareinsights.com/beacon.min.js\" data-cf-beacon='{{\"token\": \"{t}\"}}'></script>\n" if t else ""
 
 
 TICKER = []
